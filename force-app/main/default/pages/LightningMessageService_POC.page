@@ -1,0 +1,26 @@
+<apex:page >
+<script src="/soap/ajax/47.0/connection.js" type="text/javascript"/>
+<!--script src="/soap/ajax/47.0/apex.js" type="text/javascript"/-->
+
+<h1>I am Genesys WDE CTI Adapter</h1>
+<p>
+    Message: <input id="myMessage" type="text" name="message" value="I am a message" />
+</p>
+<p>
+    <button onclick="publishMC()">Publish Event</button>
+</p>
+
+<script>
+    // Load the Message Channel token in a variable
+    
+    var SAMPLEMC = "{!$MessageChannel.genesys__c}";
+    function publishMC() {
+        const message = {
+            event_type: document.getElementById("myMessage").value,
+            payload: { value: "payload" } 
+        }
+        debugger;
+        sforce.one.publish(SAMPLEMC, message);
+    }
+</script>
+</apex:page>
